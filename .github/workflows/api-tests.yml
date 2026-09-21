@@ -23,8 +23,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
+    # Instalar el motor necesario para generar el reporte HTML nativo
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+
+        
       - name: Run API Tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
           API_KEY: ${{ secrets.API_KEY }}
-        run: npx playwright test
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+        run: npm run test:full
+
+      - name: Upload Playwright Report to GitHub
+        if: always() # Asegura que se suba el reporte incluso si falla algún test
+        uses: actions/upload-artifact@v4
+        with:
+            name: playwright-api-report
+            path: playwright-report/
+            retention-days: 14
