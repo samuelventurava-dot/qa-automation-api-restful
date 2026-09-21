@@ -15,7 +15,7 @@ test.describe('API Restful-API.dev - Endpoints de Dispositivos', () => {
         deviceService = new DeviceService(request);
     });
 
-    test('CP01: POST - Debería crear un dispositivo y cumplir con el SLA y Schema', async () => {
+    test('CP01: POST - Crear un dispositivo y cumplir con el SLA y Schema', async () => {
         // 1. Arrange: Construimos un payload dinámico usando el Patrón Builder
         const payload = new DeviceBuilder()
     .withName(testData.validDevice.name)
@@ -46,7 +46,7 @@ test.describe('API Restful-API.dev - Endpoints de Dispositivos', () => {
         expect(responseBody.data.year).toBe(2026);
     });
 
-    test('CP02: GET - Debería consultar un dispositivo existente correctamente', async () => {
+    test('CP02: GET - Consultar un dispositivo existente correctamente', async () => {
         // Setup aisalado: Creamos un dispositivo rápido para este test
         const baseDevice = new DeviceBuilder().build();
         const createRes = await deviceService.createDevice(baseDevice);
@@ -62,7 +62,7 @@ test.describe('API Restful-API.dev - Endpoints de Dispositivos', () => {
         expect(responseBody.name).toBe(baseDevice.name);
     });
 
-    test('CP03: PUT - Debería actualizar los datos de un dispositivo', async () => {
+    test('CP03: PUT - Actualizar los datos de un dispositivo', async () => {
         // Setup aislado
         const baseDevice = new DeviceBuilder().build();
         const createRes = await deviceService.createDevice(baseDevice);
@@ -84,7 +84,7 @@ test.describe('API Restful-API.dev - Endpoints de Dispositivos', () => {
         expect(updateBody.data.price).toBe(9999);
     });
 
-    test('CP04: DELETE - Debería eliminar un dispositivo y retornar mensaje de éxito', async () => {
+    test('CP04: DELETE - Eliminar un dispositivo y retornar mensaje de éxito', async () => {
         // Setup aislado
         const baseDevice = new DeviceBuilder().withName('To Be Deleted').build();
         const createRes = await deviceService.createDevice(baseDevice);
