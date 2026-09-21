@@ -1,0 +1,11 @@
+{
+  "validDevice": {
+    "name": "Dispositivo desde JSON",
+    "data": {
+      "year": 2026,
+      "price": 1500,
+      "CPU model": "Intel Core i9",
+      "Hard disk size": "2 TB"
+    }
+  }
+}

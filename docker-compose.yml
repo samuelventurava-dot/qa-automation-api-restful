@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  api-framework:
+    build: .
+    container_name: qa_api_tests
+    env_file:
+      - .env

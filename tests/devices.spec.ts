@@ -3,6 +3,7 @@ import { DeviceService } from '../src/services/DeviceService';
 import { DeviceBuilder } from '../src/builders/DeviceBuilder';
 import { deviceResponseSchema } from '../src/schemas/deviceSchema';
 import { validateJsonSchema } from '../utils/jsonValidator';
+import testData from '../data/testData.json';
 
 // Grupo de pruebas para los endpoints de Devices
 test.describe('API Restful-API.dev - Endpoints de Dispositivos', () => {
@@ -17,9 +18,9 @@ test.describe('API Restful-API.dev - Endpoints de Dispositivos', () => {
     test('CP01: POST - Debería crear un dispositivo y cumplir con el SLA y Schema', async () => {
         // 1. Arrange: Construimos un payload dinámico usando el Patrón Builder
         const payload = new DeviceBuilder()
-            .withName('MacBook Pro M5 - QA Edition')
-            .withData({ year: 2026, price: 3000, color: 'Space Black' })
-            .build();
+    .withName(testData.validDevice.name)
+    .withData(testData.validDevice.data)
+    .build();
 
         // 2. Act: Ejecutamos la petición midiendo el tiempo (SLA)
         const startTime = Date.now();

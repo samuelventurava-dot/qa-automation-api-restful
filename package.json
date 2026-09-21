@@ -1,28 +1,36 @@
 {
-  "name": "qa-api-framework",
+  "name": "qa-automation-api-restful",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "test": "playwright test",
+  "test:full": "playwright test && npx tsx utils/mailer.ts"
+},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samuelventurava-dot/qa-api-framework.git"
+    "url": "git+https://github.com/samuelventurava-dot/qa-automation-api-restful.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/samuelventurava-dot/qa-api-framework/issues"
+    "url": "https://github.com/samuelventurava-dot/qa-automation-api-restful/issues"
   },
-  "homepage": "https://github.com/samuelventurava-dot/qa-api-framework#readme",
+  "homepage": "https://github.com/samuelventurava-dot/qa-automation-api-restful#readme",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
+    "@types/adm-zip": "^0.5.8",
     "@types/node": "^26.6.2",
+    "@types/nodemailer": "^8.0.2",
     "ajv": "^8.20.0",
     "dotenv": "^18.0.1",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "nodemailer": "^10.0.10"
   }
 }
